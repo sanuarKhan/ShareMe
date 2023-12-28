@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Share</title>
+
+
+<style>
+        @import url(https://fonts.googleapis.com/css?family=Open+Sans:300);
+* {
+  font-family: 'Open Sans', sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #111;
+  background-repeat: no-repeat;
+}
+.downloadsection{
+  color: rgb(8, 65, 46);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 20px 0;
+}
+.downloadsection a{
+  background-color: #200711;
+  color: #441d9f;
+  text-decoration: none;
+  border: 2px inset #000;
+  padding: 10px;
+  margin: 10px;
+}
+
+.form-container {
+  background: url(https://source.unsplash.com/TV2gg2kZD1o/1600x800);
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 450px;
+  text-align: center;
+  display: flex;
+  color: white;
+  box-shadow: 3px 10px 20px 5px rgba(0, 0, 0, .5);
+}
+
+.info {
+  width: 45%;
+  background: rgba(20, 20, 20, .8);
+  padding: 30px 0;
+  border-right: 5px solid rgba(30, 30, 30, .8);
+  h2 {
+    padding-top: 30px;
+    font-weight: 300;
+  }
+  p {
+    font-size: 18px;
+  }
+  .icon {
+    font-size: 8em;
+    padding: 20px 0;
+    color: rgba(10, 180, 180, 1);
+  }
+}
+
+.form {
+  width: 70%;
+  padding: 30px 0;
+  background: rgba(20, 40, 40, .8);
+  transition: .2s;
+  h2 {
+    font-weight: 300;
+  }
+}
+
+.inputFields {
+  margin: 15px 0;
+  font-size: 16px;
+  padding: 10px;
+  width: 250px;
+  border: 1px solid rgba(10, 180, 180, 1);
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  background: rgba(20, 20, 20, .2);
+  color: white;
+  outline: none;
+}
+
+.noBullet {
+  list-style-type: none;
+  padding: 0;
+}
+
+#submit {
+  border: 1px solid rgba(10, 180, 180, 1);
+  background: rgba(20, 20, 20, .6);
+  font-size: 18px;
+  color: white;
+  margin-top: 20px;
+  padding: 10px 50px;
+  cursor: pointer;
+  transition: .4s;
+  &:hover {
+    background: rgba(20, 20, 20, .8);
+    padding: 10px 80px;
+  }
+}
+
+    </style>
+</head>
+<body>
+  <% if(locals.fileLink != null){%>
+  <div class="downloadsection">
+    Your file is Uploaded
+    <a href="<%= locals.fileLink %>"><%= locals.fileLink %></a>
+  </div>
+ <% } %>
+    
+    <div class="form-container">
+        <div class="info">
+          <h2>free and secure</h2>
+          <i class="icon ion-ios-ionic-outline" aria-hidden="true"></i>
+          <p>Share file ultimate</p>
+        </div>
+        <form action="/upload" method="post" class="form" enctype="multipart/form-data">
+          <h2>Share file</h2>
+          <ul class="noBullet">
+           
+            <li>
+                <label for="file">File:</label>
+                <input type="file" class="inputFields" id="file" name="file" required/>
+              </li>
+            <li>
+              <label for="password">Password</label>
+              <input type="password" class="inputFields" id="password" name="password" placeholder="Password"/>
+            </li>
+            
+            <li id="center-btn">
+              <button type="submit" id="submit">Share</button>
+            </li>
+          </ul>
+        </form>
+      </div>
+</body>
+</html>
