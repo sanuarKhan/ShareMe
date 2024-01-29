@@ -39,8 +39,7 @@ app.post("/upload", upload.single("file"), async (req, res) => {
   const fileDetails = new File({
     originalName: req.file.originalname,
     path: req.file.path,
-    size: req.file.size,
-    uuid: req.body.uuid,
+    
   });
   if (req.body.password !== null && req.body.password !== "") {
     fileDetails.password = await bcrypt.hash(req.body.password, 10);
